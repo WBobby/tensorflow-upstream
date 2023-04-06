@@ -19,6 +19,29 @@
 # Usage: setup.python.sh <pyversion> <requirements.txt> <runtime mode>
 set -xe
 
+
+function build_python_from_src() {
+    VERSION=$1
+    REQUIREMENTS=$2
+    local python_map
+    declare -A python_map=(
+        [python3.8]='3.8.12'
+    	[python3.9]='3.9.12'
+    	[python3.10]='3.10.9'
+    	[python3.11]='3.11.2'
+    )
+    local _ver=${python_map[$VERSION]}
+    wget https://www.python.org/ftp/python/${_ver}/Python-${_ver}.tgz
+    tar xvf Python-${_ver}.tgz && rm -rf Python-${_ver}.tgz
+    pushd Python-${_ver}/ && \
+	./configure --enable-optimizations \
+	&& make install -j16 && popd
+}
+
+if [ -n ${CUSTOM_INSTALL} ] && (source /etc/os-release && [[ ${NAME} == SLES ]]); then
+    build_python_from_src $1 $2
+else
+
 source ~/.bashrc
 VERSION=$1
 REQUIREMENTS=$2
@@ -45,6 +68,8 @@ else
       ln -s /usr/include/x86_64-linux-gnu/$f /dt9/usr/include/x86_64-linux-gnu/$f
     done
     popd
+fi
+
 fi
 
 # Setup links for TensorFlow to compile.
