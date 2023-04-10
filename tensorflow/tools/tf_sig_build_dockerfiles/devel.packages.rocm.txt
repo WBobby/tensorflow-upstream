@@ -24,6 +24,7 @@ colordiff
 curl
 ffmpeg
 git
+gpg-agent
 jq
 less
 libcurl3-dev
