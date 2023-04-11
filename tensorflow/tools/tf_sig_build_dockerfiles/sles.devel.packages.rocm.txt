@@ -1,6 +1,5 @@
 rocm-libs
 rocm-dev
-miopengemm
 
 make
 gcc

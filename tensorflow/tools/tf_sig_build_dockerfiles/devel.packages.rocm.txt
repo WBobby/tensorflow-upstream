@@ -3,7 +3,6 @@ rocm-libs
 rocm-dev
 miopen-hip 
 miopen-hip-dev
-miopengemm
 rocblas
 rocblas-dev
 rocsolver-dev

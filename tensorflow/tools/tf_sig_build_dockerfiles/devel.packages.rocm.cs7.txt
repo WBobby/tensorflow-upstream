@@ -52,7 +52,6 @@ libdrm-amdgpu
 rocm-dev
 miopen-hip 
 miopen-hip-devel 
-miopengemm 
 rocblas 
 rocblas-devel 
 rocsolver-devel 
