@@ -43,7 +43,7 @@ function build_python_from_src() {
     popd
 }
 
-if [ -n "${CUSTOM_INSTALL}" ] && (source /etc/os-release && [[ ${NAME} == SLES ]]); then
+if (source /etc/os-release && [[ ${NAME} == SLES ]]); then
     build_python_from_src $1 $2
 else
 

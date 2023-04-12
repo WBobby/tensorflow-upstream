@@ -20,7 +20,7 @@
 set -e
 
 
-if [ -n ${CUSTOM_INSTALL} ] && (source /etc/os-release && [[ ${NAME} == SLES ]]); then
+if (source /etc/os-release && [[ ${NAME} == SLES ]]); then
     zypper install -y $(grep -v '^#' '/sles.'$(basename $1))
 else
 # Prevent apt install tzinfo from asking our location (assumes UTC)
