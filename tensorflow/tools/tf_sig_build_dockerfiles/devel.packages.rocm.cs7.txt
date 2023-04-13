@@ -35,7 +35,8 @@ openssh-clients
 pciutils 
 pciutils-devel 
 pciutils-libs 
-java-11-openjdk-devel 
+java-11-openjdk-devel
+patchelf
 pkgconfig 
 pth 
 qemu-kvm 
@@ -52,7 +53,6 @@ libdrm-amdgpu
 rocm-dev
 miopen-hip 
 miopen-hip-devel 
-miopengemm 
 rocblas 
 rocblas-devel 
 rocsolver-devel 
