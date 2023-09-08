@@ -42,14 +42,3 @@ ENV ROCM_TOOLKIT_PATH=${ROCM_PATH}
 
 RUN pip install --no-cache-dir /${TF_PKGS_DIR}/${TENSORFLOW_PACKAGE}
 RUN echo 'ALL ALL=NOPASSWD:ALL' | tee /etc/sudoers.d/sudo-nopasswd
-
-ARG TF_TESTING_FL
-ENV TF_TESTING_FL=${TF_TESTING_FL}
-ARG DWLD_TF_SRC_CMD
-RUN if [ -n "${DWLD_TF_SRC_CMD}" ]; then eval "${DWLD_TF_SRC_CMD}"; fi
-RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.11.0/bazelisk-linux-amd64 -O /usr/local/bin/bazel && \
-    chmod +x /usr/local/bin/bazel
-RUN git clone https://github.com/tensorflow/models.git
-RUN git clone https://github.com/tensorflow/examples.git
-RUN git clone https://github.com/tensorflow/autograph.git
-RUN git clone https://github.com/tensorflow/benchmarks.git
